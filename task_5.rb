@@ -7,47 +7,13 @@ month = gets.chomp.to_i
 print "Введите год "
 year = gets.chomp.to_i
 
+days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 ]
+
 # проверяем високосный ли год
-if year % 400 == 0
-  days_in_febr = 29
 
-elsif year % 100 == 0
-  days_in_febr = 28
+leap_year = ( year % 4 == 0 && year % 100 != 0 ) || ( year % 400 == 0)
+days[1] = 29 if leap_year
 
-elsif year % 4 == 0
-  days_in_febr = 29
+sum = days[0..month-2].sum
 
-else
-  days_in_febr = 28
-end
-
-if days_in_febr == 28
-  puts "год невисокосный"
-else
-  puts "год високосный"
-end
-
-hash_months = {
-  1 => 31,
-  2 => days_in_febr,
-  3 => 31,
-  4 => 30,
-  5 => 31,
-  6 => 30,
-  7 => 31,
-  8 => 31,
-  9 => 30,
-  10 => 31,
-  11 => 30,
-  12 => 31
-}
-
-sum_days = 0
-
-hash_months.each do |key, value|
-  if key < month
-    sum_days += value
-  end
-end
-
-puts "Порядковый номер дня в году:  #{sum_days + day}"
+puts "Порядковый номер дня в году:  #{sum + day}"

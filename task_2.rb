@@ -1,8 +1,8 @@
-array = [5]
-array.each do |index|
+array = []
+index = 5
+while index <= 100
+  array.push(index)
   index += 5
-  if index <= 100
-    array.push(index)
-  end
 end
+
 print array

@@ -1,6 +1,6 @@
 print "Введите название товара: "
 product = gets.chomp
-hash = Hash.new
+hash = {}
 
 while product != 'стоп' do
   print "Введите цену за единицу товара: "
